@@ -24,8 +24,10 @@ const searchBox1 = document.getElementById("search-box1");
 const searchButton1 = document.getElementById("search-btn1");
 const handleSearchAge = (e) => {
     e.preventDefault(); 
-    const ageQuery = searchBox2.value;
-    const searchData = studentData.filter((e) => e.age == ageQuery);
+    const ageQuery = searchBox1.value;
+    console.log(ageQuery)
+    const searchData = studentData.filter((e) => e.age == parseInt(ageQuery));
+    console.log(searchData)
     const searchValue = searchData.map((item) => {
         return `
         <a href="#"><li>Student: ${item.name};  Id: ${item.id};   Age: ${item.age};   Email: ${item.email}</li>
@@ -35,12 +37,15 @@ const handleSearchAge = (e) => {
 };
 searchButton1.addEventListener("click", handleSearchAge);
 
+
 const searchBox2 = document.getElementById("search-box2");
 const searchButton2 = document.getElementById("search-btn2");
 const handleSearchName = (e) => {
     e.preventDefault(); 
-    const nameQuery = searchBox1.value;
+    const nameQuery = searchBox2.value;
+    console.log(nameQuery)
     const searchData = studentData.filter((e) => e.name === nameQuery);
+    console.log(searchData)
     const searchValue = searchData.map((item) => {
         return `
         <a href="#"><li>Student: ${item.name};  Id: ${item.id};   Age: ${item.age};   Email: ${item.email}</li>
@@ -48,4 +53,4 @@ const handleSearchName = (e) => {
     });
     cardHTML.innerHTML = searchValue.join("");
 };
-searchButton1.addEventListener("click", handleSearchName);
+searchButton2.addEventListener("click", handleSearchName);
